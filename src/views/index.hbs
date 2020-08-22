@@ -25,3 +25,42 @@
         </div>
     </form>
 </div>
+
+<div class="wu--feed-main">
+    {{#each posts}}
+        {{#if filename}}
+            <div class="wu--card">
+                <div class="wu--card-photo">
+                    <div class="card-photo" style="background-image: url('/public/upload/{{filename}}')"></div>
+                </div>
+                <div class="wu--card-body card-body-1">
+                    <div class="wu--card-text">
+                        <p class="wu--card-text-p">
+                            {{description}}
+                        </p>
+                    </div>
+                    <div class="wu--card-date">
+                        <p class="wu--card-date-p">
+                            10 min ago
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {{else}}
+            <div class="wu--card">
+                <div class="wu--card-body card-body-2">
+                    <div class="wu--card-text">
+                        <p class="wu--card-text-p">
+                            {{description}}
+                        </p>
+                    </div>
+                    <div class="wu--card-date">
+                        <p class="wu--card-date-p">
+                            10 min ago
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+    {{/each}}
+</div>

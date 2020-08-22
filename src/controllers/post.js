@@ -51,8 +51,8 @@ ctrl.create = async (req, res) => {
         console.log(newPost);
     }
 
-
     res.send('Success');
+
 };
 
 ctrl.like = (req, res) => {

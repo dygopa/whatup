@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
-const {Schema, model} = mongoose;
-
+const {Schema} = mongoose;
 const path = require('path');
 
 const PostSchema = new Schema({
@@ -13,7 +12,7 @@ const PostSchema = new Schema({
 });
 
 PostSchema.virtual('uniqueId').get(function(){
-    return this.fileName.replace(path.extname(this.fileName), '')
+    return this.filename.replace(path.extname(this.filename), '')
 });
 
-module.exports = model('Post', PostSchema);
+module.exports = mongoose.model('Post', PostSchema);
