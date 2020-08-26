@@ -36,7 +36,7 @@ module.exports = app => {
 
     //Routes
     routes(app);
-
+    app.use(require('../routes/users.routes'));
     //Static falis
 
     app.use('/public', express.static(path.join(__dirname, '../public')))

@@ -1,66 +1,78 @@
-<div class="form-container mb-5">
-    <form action="/posts" method="post" enctype="multipart/form-data">
-        <div class="form-group">
-            <textarea name="description" onkeyup="textAreaAdjust(this)"  class="wu-input-textarea" placeholder="¿Algo que decir?" style="overflow:hidden" required></textarea>
-        </div>
-        <div class="form-img-container">
-            <div id="image" class="hidde"></div>
-        </div>
-        <div class="flex">
-            <div class="form-group">
-                <div id="uploadFileBtn" onclick="getFile()">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image">
-                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                        <circle cx="8.5" cy="8.5" r="1.5"/>
-                        <polyline points="21 15 16 10 5 21"/>
-                    </svg>    
-                </div>
-                <div style='height: 0px;width: 0px; overflow:hidden;'>
-                    <input id="upfile" type="file" name="image" value="upload" onchange="sub(this); show(this);" />   
-                </div>
-            </div>
-            <button class="ml-3 wu--btn wu--btn-primary">
-                Publicar
-            </button>
-        </div>
-    </form>
-</div>
+{{> navbar }}
+{{> sidebar }}
 
-<div class="wu--feed-main">
-    {{#each posts}}
-        {{#if filename}}
-            <div class="wu--card">
-                <div class="wu--card-photo">
-                    <div class="card-photo" style="background-image: url('/public/upload/{{filename}}')"></div>
-                </div>
-                <div class="wu--card-body card-body-1">
-                    <div class="wu--card-text">
-                        <p class="wu--card-text-p">
-                            {{description}}
-                        </p>
-                    </div>
-                    <div class="wu--card-date">
-                        <p class="wu--card-date-p">
-                            10 min ago
-                        </p>
-                    </div>
-                </div>
+<div class="wu--site-main">
+
+    <div class="form-container mb-5">
+        <form action="/posts" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <textarea name="description" onkeyup="textAreaAdjust(this)"  class="wu-input-textarea" placeholder="¿Algo que decir?" style="overflow:hidden" required></textarea>
             </div>
-        {{else}}
-            <div class="wu--card">
-                <div class="wu--card-body card-body-2">
-                    <div class="wu--card-text">
-                        <p class="wu--card-text-p">
-                            {{description}}
-                        </p>
+            <div class="form-img-container">
+                <div id="image" class="hidde"></div>
+            </div>
+            <div class="flex">
+                <div class="form-group">
+                    <div id="uploadFileBtn" onclick="getFile()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>    
                     </div>
-                    <div class="wu--card-date">
-                        <p class="wu--card-date-p">
-                            10 min ago
-                        </p>
+                    <div style='height: 0px;width: 0px; overflow:hidden;'>
+                        <input id="upfile" type="file" name="image" value="upload" onchange="sub(this); show(this);" />   
                     </div>
                 </div>
+                <button class="ml-3 wu--btn wu--btn-primary">
+                    Publicar
+                </button>
             </div>
-        {{/if}}
-    {{/each}}
+        </form>
+    </div>
+
+    <div class="my-2">
+        <h2>
+            Publicaciones recientes
+        </h2>
+    </div>
+
+    <div class="wu--feed-main">
+        {{#each posts}}
+            {{#if filename}}
+                <div class="wu--card">
+                    <div class="wu--card-photo">
+                        <div class="card-photo" style="background-image: url('/public/upload/{{filename}}')"></div>
+                    </div>
+                    <div class="wu--card-body card-body-1">
+                        <div class="wu--card-text">
+                            <p class="wu--card-text-p">
+                                {{description}}
+                            </p>
+                        </div>
+                        <div class="wu--card-date">
+                            <p class="wu--card-date-p">
+                                10 min ago
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {{else}}
+                <div class="wu--card">
+                    <div class="wu--card-body card-body-2">
+                        <div class="wu--card-text">
+                            <p class="wu--card-text-p">
+                                {{description}}
+                            </p>
+                        </div>
+                        <div class="wu--card-date">
+                            <p class="wu--card-date-p">
+                                10 min ago
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {{/if}}
+        {{/each}}
+    </div>
 </div>

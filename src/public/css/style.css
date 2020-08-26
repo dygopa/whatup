@@ -19,17 +19,22 @@ body {
 
 body,
 .whatup--site-inner {
-  background: #fff;
+  /* background: #fff; */
+  background-color: #0a0a0a;
 }
 
 ::-moz-selection {
-  background: #000;
+  background:var(--primary);
   color: #fff;
 }
 
 ::selection {
-  background: #000;
+  background:var(--primary);
   color: #fff;
+}
+
+::placeholder{
+  color: rgba(255, 255, 255, 0.678);
 }
 
 a {
@@ -225,8 +230,8 @@ button:focus {
 }
 
 .whatup--site-nav {
-  background-color: #fff;
-  padding: 1% 10%;
+  background: rgb(255 255 255 / 57%);
+  backdrop-filter: blur(20px);  padding: 1% 10%;
   position: fixed;
   left: 0;
   font-weight: 400;
@@ -1100,22 +1105,198 @@ p.wu--card-date-p {
   background-size: cover;
 }
 
-/* Jarallax */
+/*Signup y Signin*/
 
-.jarallax {
+.wu--sign-main {
+  width: 100%;
+  height: 100vh;
+  display: block;
   position: relative;
-  z-index: 0;
 }
 
-.jarallax>.jarallax-img {
-  position: absolute;
-  -o-object-fit: cover;
-  object-fit: cover;
-  /* support for plugin https://github.com/bfred-it/object-fit-images */
-  font-family: 'object-fit: cover;';
-  top: 0;
-  left: 0;
-  width: 100%;
+.wu--sign-form {
+  height: -webkit-fill-available;
+  padding: 5% 0%;
+  position: relative;
+  display: flex;
+  justify-content:space-around;
+}
+
+.wu--sign-form-container form {
+  display: grid;
+  position: relative;
   height: 100%;
-  z-index: -1;
+  box-sizing: border-box;
+  width: 100%;
+  align-content: center;
+}
+
+.wu--sign-info-container {
+  position: relative;
+  /* background-color: var(--primary); */
+  /* background-color: #101010; */
+  display: block;
+  width: 35%;
+  height: -webkit-fill-available;
+  border-radius: 35px;
+  box-sizing: border-box;
+  padding: 4% 3%;
+}
+
+.wu--sign-info {
+  display: grid;
+  width: -webkit-fill-available;
+  height: 100%;
+  position: relative;
+  box-sizing: border-box;
+  align-content: space-between;
+}
+
+.wu--sign-info-logo {
+  width: 24%;
+  height: fit-content;
+  margin-bottom: -27%;
+}
+
+.wu--sign-info-top {
+  height: fit-content;
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.wu--sign-info-bottom {
+  height: fit-content;
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.wu--sign-info-title {
+  margin-bottom: 7%;
+  display: block;
+  position: relative;
+  height: fit-content;
+  width: fit-content;
+}
+
+.wu--sign-info-text {
+  display: block;
+  position: relative;
+  height: fit-content;
+  width: fit-content;
+}
+
+.wu--sign-info-title p {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.wu--sign-info-text p {
+  color: #fff;
+  font-weight: 200;
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.wu--sign-info-add-bottom {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: fit-content;
+  /* background-color: #63a0f1; */
+  background-color: #232323;
+  border-radius: 14px;
+  padding: 4%;
+}
+
+.wu--sign-info-footer {
+  position: relative;
+  display: block;
+  margin-top: 6%;
+  width: 100%;
+  text-align: center;
+}
+
+.wu--sign-info-footer p {
+  /* color: #274b7b; */
+  color: #5a5a5a;
+  font-size: 13px;
+}
+
+.wu--sign-info-footer a {
+  /* color: #274b7b; */
+  color: #5a5a5a;
+  font-size: 13px;
+}
+
+.wu--sign-info-add-bottom p {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 200;
+  line-height: 21px;
+}
+
+.wu--sign-info-add-bottom a {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.wu--sign-form-container {
+  position: relative;
+  /* background-color: #fff; */
+  background-color: #101010;
+  display: block;
+  width: 35%;
+  height: -webkit-fill-available;
+  border-radius: 35px;
+  box-sizing: border-box;
+  padding: 4% 3%;
+}
+
+.wu--input-group {position: relative;margin-bottom: 6%;display: block;box-sizing: border-box;}
+
+.wu--input-group input {
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  width: 100%;
+  height: fit-content;
+  padding: 4% 3%;
+  border-radius: 9px;
+  border: 1px solid var(--primary);
+  background-color:transparent;
+  font-family: 'Poppins';
+  font-size: 12px;
+  color:#fff;
+}
+
+label.wu--input-label {
+  position: relative;
+  display: block;
+  margin-bottom: 2%;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+button.wu--form-button {
+  width: 100%;
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  padding: 5% 0%;
+  background-color: var(--primary);
+  border: none;
+  border-radius: 9px;
+  font-family: 'Poppins';
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: capitalize;
+  margin-top: 10%;
+  cursor: pointer;
 }

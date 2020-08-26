@@ -1,0 +1,61 @@
+{{!-- <div class="wu--site-main"> --}}
+
+<div class="wu--sign-main">
+    <div class="wu--sign-form">
+
+        <div class="wu--sign-info-container">
+            <div class="wu--sign-info">
+                <div class="wu--sign-info-logo">
+                    <img src="/public/img/whatup-iso-svg.svg" class="img">
+                </div>
+                <div class="wu--sign-info-top">
+                    <div class="wu--sign-info-title">
+                        <p>
+                            Regístrate
+                        </p>
+                    </div>
+                    <div class="wu--sign-info-text">
+                        <p>
+                            Comienza con unos pocos clicks y disfruta de lo que esta pasando con Whatup
+                        </p>
+                    </div>
+                </div>
+                <div class="wu--sign-info-bottom">
+                    <div class="wu--sign-info-add-bottom">
+                        <p>Ya tienes una cuenta?</p>
+                        <a href="#">
+                            Inicia sesión
+                        </a>
+                    </div>
+                    <div class="wu--sign-info-footer">
+                        <p>
+                            Hecho por <a target="_blank" href="https://github.com/dygopa"><b>@dygopa</b></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wu--sign-form-container">
+            <form action="../users/signup" method="POST">
+                <div class="wu--input-group">
+                    <label for="username" class="wu--input-label">Nombre de usuario</label>
+                    <input type="text" placeholder="Crea tu nombre de usuario" name="username">
+                </div>
+                <div class="wu--input-group">
+                    <label for="email" class="wu--input-label">Email</label>
+                    <input type="email" placeholder="Ingresa tu email" name="email">
+                </div>
+                <div class="wu--input-group">
+                    <label for="password" class="wu--input-label">Contraseña</label>
+                    <input type="password" placeholder="Crea una contraseña" name="password">
+                </div>
+                <button type="submit" class="wu--form-button">
+                    Registrarse
+                </button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+{{!-- </div> --}}

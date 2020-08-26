@@ -11,7 +11,6 @@ ctrl.index = (req, res) => {
 
 ctrl.create = async (req, res) => {
     if(req.file){
-
         const saveImage = async () =>{
             const imgUrl = randomNumber();
             const images = await Post.find({
@@ -40,9 +39,7 @@ ctrl.create = async (req, res) => {
                 }
             }
         };
-
         saveImage();
-
     }else{
         const newPost = new Post({
             description: req.body.description
@@ -50,9 +47,8 @@ ctrl.create = async (req, res) => {
         const postSaved = await newPost.save();
         console.log(newPost);
     }
-
-    res.send('Success');
-
+    // res.send('Success');
+    res.redirect('/');
 };
 
 ctrl.like = (req, res) => {
