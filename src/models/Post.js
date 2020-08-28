@@ -8,7 +8,7 @@ const PostSchema = new Schema({
     likes: {type: Number, default: 0},
     views: { type: Number, default: 0 },
     timestamp: { type: Date, default: Date.now },
-    user: {type: String}
+    user: {type: String, required: true}
 });
 
 PostSchema.virtual('uniqueId').get(function(){

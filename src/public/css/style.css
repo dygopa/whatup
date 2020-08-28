@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-  --primary: #2785ff;
+  --primary: #5740ad;
+  --red: #ff3a3a;
 }
 
 * {
@@ -10,7 +11,7 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  color: #000;
+  color: #000000;
   font-size: 16px;
   line-height: 30px;
   font-weight: 300;
@@ -134,6 +135,49 @@ a:hover {
   }
 }
 
+/*Alerts*/
+
+.wu--alert {
+  background-color: transparent;
+  border-radius: 12px;
+  width: fit-content;
+  padding: 1% 1%;
+  position: fixed;
+  margin: 0px auto;
+  left: 2%;
+  bottom: 4%;
+  z-index: 1;
+  display: flex;
+  align-content: center;
+}
+
+button.wu--close {
+  background-color: transparent;
+  border: none;
+  font-size: 25px;
+  margin-left: 10px;
+}
+
+.wu--alert.wu--alert-error {
+  border: 1px solid var(--red);
+  color: var(--red);
+}
+
+.wu--alert.wu--alert-error > button.wu--close{
+  color: var(--red);
+}
+
+.wu--alert.wu--alert-success {
+  border: 1px solid var(--primary);
+  color: var(--primary);
+}
+
+.wu--alert.wu--alert-success > button.wu--close{
+  color: var(--primary);
+}
+
+/*Buttons*/
+
 .wu--btn {
   position: relative;
   width: fit-content;
@@ -165,7 +209,7 @@ a:hover {
   --moz-border-radius: 10px;
   border-radius: 10px;
   text-align: center;
-  background-color: #2785FF;
+  background-color: var(--primary);
   color: #fff;
   cursor: pointer;
   text-overflow: ellipsis;
@@ -181,7 +225,7 @@ a:hover {
   --moz-border-radius: 10px;
   border-radius: 10px;
   text-align: center;
-  background-color: #2785FF;
+  background-color: var(--primary);
   color: #fff;
   cursor: pointer;
   text-overflow: ellipsis;
@@ -189,15 +233,18 @@ a:hover {
   display: grid;
 }
 
+/*Inputs*/
 
 textarea.wu-input-textarea {
   width: 100%;
   resize: none;
   padding: 14px 14px;
-  border: none;
   font-family: 'Poppins';
-  background-color: #fff;
+  background-color: transparent;
   border-radius: 10px;
+  border: 1px solid var(--primary);
+  margin-bottom: 2%;
+  color:#fff;
 }
 
 textarea:focus,
@@ -230,7 +277,7 @@ button:focus {
 }
 
 .whatup--site-nav {
-  background: rgb(255 255 255 / 57%);
+  background: rgb(23 23 23 / 57%);
   backdrop-filter: blur(20px);  padding: 1% 10%;
   position: fixed;
   left: 0;
@@ -883,7 +930,7 @@ button:focus {
   box-sizing: border-box;
   padding: 2% 4%;
   border-radius: 10px;
-  background-color: #e6eff1;
+  background-color: #212121;
   justify-content: space-between;
 }
 
@@ -919,14 +966,14 @@ button.wu--btn-searchbar {
 p.account-name-p {
   font-size: 15px;
   line-height: initial;
-  font-weight: 700;
-  color: #0a0a0a;
+  font-weight: 500;
+  color: #ffffff;
 }
 
 p.account-email-p {
   font-size: 12px;
   line-height: initial;
-  color: #6c7fc7;
+  color: #505152;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -941,22 +988,22 @@ p.account-email-p {
 
 a.sidebar-link {
   height: fit-content;
-  margin-bottom: 5%;
-  background-color: white;
+  margin-bottom: 10%;
+  background-color: #101010;
   border-radius: 10px;
   padding: 4% 4%;
   font-size: 14px;
   /* font-size: 0.88rem; */
-  color: #2785ff;
+  color: #ffffff;
   font-weight: 300;
 }
 
 a.sidebar-link:hover {
-  background-color: #d5e7ff;
+  background-color: var(--primary);
 }
 
 span.sidebar-link-icon {
-  color: #2785ff;
+  color: #ffffff;
   margin-right: 15px;
   line-height: 0px;
 }
@@ -972,10 +1019,10 @@ p.sidebar-link-p {
   display: block;
   min-width: 18%;
   max-width: 18%;
-  height: 90.3vh;
+  height: fit-content;
   top: 12%;
-  background-color: #ffffff;
-}
+  /* background-color: #101010;*/
+  }
 
 .sidebar-container {
   position: relative;
@@ -990,6 +1037,27 @@ p.sidebar-link-p {
   background-position: center;
   background-size: cover;
   border-radius: 12px;
+}
+
+.wu--section-title {
+  position: relative;
+  display: block;
+  margin-bottom: 9%;
+  color: #fff;
+}
+
+.wu--section-empty {
+  position: relative;
+  display: block;
+  width: fit-content;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.wu--section-empty p {
+  color: #3c3c3c;
+  font-size: 21px;
+  font-weight: 700;
 }
 
 .grid {
@@ -1033,7 +1101,7 @@ p.sidebar-link-p {
 
 .wu--card-body {
   position: relative;
-  background-color: #ffffff;
+  background-color: #101010;
   border-radius: 20px;
   width: 100%;
   height: 20vh;
@@ -1043,28 +1111,28 @@ p.sidebar-link-p {
 
 .card-body-1::before {
   content: '';
-  background-color: #b0c3cb;
+  background-color: #000000;
   position: absolute;
   z-index: -1;
   height: 20vh;
   width: 80%;
-  top: -20%;
+  top: 15%;
   left: 11%;
   border-radius: 42px;
-  filter: blur(60px);
+  filter: blur(20px);
 }
 
 .card-body-2::before {
   content: '';
-  background-color: #b0c3cb;
+  background-color: #000000;
   position: absolute;
   z-index: -1;
-  height: 15vh;
+  height: 10vh;
   width: 80%;
-  top: 40%;
+  top: 48%;
   left: 11%;
   border-radius: 42px;
-  filter: blur(60px);
+  filter: blur(20px);
 }
 
 .wu--card-text {
@@ -1078,7 +1146,7 @@ p.wu--card-text-p {
   font-family: 'Poppins';
   font-weight: 600;
   font-size: 17px;
-  color: #0a0a0a;
+  color: #ffffff;
 }
 
 p.wu--card-date-p {

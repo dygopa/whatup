@@ -1,0 +1,17 @@
+{{#if success_msg}}
+    <div id="alert" class="wu--alert wu--alert-success">
+        {{success_msg}}
+        <button onclick="closeAlert();" type="button" class="wu--close">
+            <span>&times;</span>
+        </button>
+    </div>
+{{/if}}
+
+{{#if error_msg}}
+    <div id="alert" class="wu--alert wu--alert-error">
+        {{error_msg}}
+        <button onclick="closeAlert();" type="button" class="wu--close">
+            <span>&times;</span>
+        </button>
+    </div>
+{{/if}}

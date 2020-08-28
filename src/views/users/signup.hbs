@@ -16,14 +16,14 @@
                     </div>
                     <div class="wu--sign-info-text">
                         <p>
-                            Comienza con unos pocos clicks y disfruta de lo que esta pasando con Whatup
+                            Comienza con unos pocos clicks y disfruta de lo que esta pasando con <b>Whatup</b>
                         </p>
                     </div>
                 </div>
                 <div class="wu--sign-info-bottom">
                     <div class="wu--sign-info-add-bottom">
                         <p>Ya tienes una cuenta?</p>
-                        <a href="#">
+                        <a href="/signin">
                             Inicia sesión
                         </a>
                     </div>
@@ -36,18 +36,22 @@
             </div>
         </div>
         <div class="wu--sign-form-container">
-            <form action="../users/signup" method="POST">
+            <form action="signup" method="POST">
                 <div class="wu--input-group">
                     <label for="username" class="wu--input-label">Nombre de usuario</label>
-                    <input type="text" placeholder="Crea tu nombre de usuario" name="username">
+                    <input type="text" placeholder="Crea tu nombre de usuario" name="username" value="{{username}}">
                 </div>
                 <div class="wu--input-group">
                     <label for="email" class="wu--input-label">Email</label>
-                    <input type="email" placeholder="Ingresa tu email" name="email">
+                    <input type="email" placeholder="Ingresa tu email" name="email" value="{{email}}">
                 </div>
                 <div class="wu--input-group">
                     <label for="password" class="wu--input-label">Contraseña</label>
                     <input type="password" placeholder="Crea una contraseña" name="password">
+                </div>
+                <div class="wu--input-group">
+                    <label for="confirm_password" class="wu--input-label">Confirmar contraseña</label>
+                    <input type="password" placeholder="Confirma la contraseña" name="confirm_password">
                 </div>
                 <button type="submit" class="wu--form-button">
                     Registrarse

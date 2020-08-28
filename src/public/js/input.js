@@ -35,3 +35,7 @@ function textAreaAdjust(element) {
   element.style.height = "1px";
   element.style.height = (10+element.scrollHeight)+"px";
 }
+
+function closeAlert(){
+  document.getElementById("alert").style.display = "none";
+}

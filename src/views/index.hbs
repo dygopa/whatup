@@ -31,13 +31,8 @@
         </form>
     </div>
 
-    <div class="my-2">
-        <h2>
-            Publicaciones recientes
-        </h2>
-    </div>
-
     <div class="wu--feed-main">
+    {{#if posts}}
         {{#each posts}}
             {{#if filename}}
                 <div class="wu--card">
@@ -74,5 +69,10 @@
                 </div>
             {{/if}}
         {{/each}}
+    {{else}}
+        <div class="wu--section-empty">
+            <p>Parece que no hay nada que mostrar</p>
+        </div>
+    {{/if}}
     </div>
 </div>

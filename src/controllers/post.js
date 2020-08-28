@@ -29,7 +29,9 @@ ctrl.create = async (req, res) => {
                         description: req.body.description,
                         filename: imgUrl + ext,
                     });
+                    newPost.user = req.user._id;
                     const postSaved = await newPost.save();
+                    req.flash('success_msg', 'Post publicado con exito');
                     console.log(newPost);
                 }else{
                     await fs.unlink(imageTempPath);
@@ -39,15 +41,17 @@ ctrl.create = async (req, res) => {
                 }
             }
         };
+        
         saveImage();
     }else{
         const newPost = new Post({
             description: req.body.description
         });
+        newPost.user = req.user._id;
         const postSaved = await newPost.save();
+        req.flash('success_msg', 'Post publicado con exito');
         console.log(newPost);
     }
-    // res.send('Success');
     res.redirect('/');
 };
 

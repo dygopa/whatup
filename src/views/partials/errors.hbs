@@ -1,0 +1,16 @@
+{{#if error}}
+    <div id="alert" class="wu--alert wu--alert-error">
+        {{error}}
+        <button onClick="closeAlert();" type="button" class="wu--close">
+            <span>&times;</span>
+        </button>
+    </div>
+{{/if}}
+{{#each errors}}
+    <div id="alert" class="wu--alert wu--alert-error">
+        {{text}}
+        <button onClick="closeAlert();" type="button" class="wu--close">
+            <span>&times;</span>
+        </button>
+    </div>
+{{/each}}
