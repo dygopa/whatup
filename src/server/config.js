@@ -8,8 +8,8 @@ const flash = require('connect-flash');
 const connectMongo = require('connect-mongo');
 const mongoose = require('mongoose');
 const passport = require('passport');
-const cloudinary = require('cloudinary');
-
+const cloudinary = require('cloudinary').v2;
+require('dotenv').config()
 
 const routes = require('../routes/index');
 
@@ -36,19 +36,21 @@ module.exports = app => {
 
     //Middlewares
     app.use(morgan('dev'));
-    app.use(multer({
-        dest: path.join(__dirname, '../public/upload/temp')
-    }).single('image'));
-    app.use(express.urlencoded({
-        extended: false
-    }));
+
+    const storage = multer.diskStorage({
+        destination: path.join(__dirname, '../public/uploads'),
+    }) 
+    app.use(multer({storage}).single('image'));
+
     const MongoStore = connectMongo(session);
+
     app.use(session({
         secret: 'secret',
         resave: true,
         saveUninitialized: true,
         store: new MongoStore({mongooseConnection: mongoose.connection})
     }));
+
     app.use(express.json());
     app.use(flash());
     app.use(passport.initialize());
@@ -69,6 +71,13 @@ module.exports = app => {
 
     //Static falis
     app.use('/public', express.static(path.join(__dirname, '../public')))
+
+    //Cloudinary config
+    cloudinary.config({
+        cloud_name: process.env.CLOUD_NAME,
+        api_key: process.env.API_KEY,
+        api_secret: process.env.API_SECRET
+    });
 
     //Error Handlers
     if ('development' === app.get('env')){

@@ -33,7 +33,11 @@ usersCtrl.signup = async (req, res) => {
             req.flash("error_msg", "Ya hay un usuario usando este email");
             res.redirect("/signup");
         }else{
-            const newUser = new User({username, email, password});
+            const newUser = new User({
+                username, 
+                email, 
+                password
+            });
             newUser.password = await newUser.encryptPassword(password);
             await newUser.save();
             req.flash("success_msg", "Registro exitoso");

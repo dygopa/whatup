@@ -1,5 +1,5 @@
 module.exports = {
     database: {
-        URI: 'mongodb://localhost/whatup'
+        URI: process.env.MONGODB_URI
     },
 };

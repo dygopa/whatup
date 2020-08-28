@@ -7,6 +7,8 @@ const PostSchema = new Schema({
     filename: {type: String},
     likes: {type: Number, default: 0},
     views: { type: Number, default: 0 },
+    imgUrl: { type: String},
+    public_id: { type: String},
     timestamp: { type: Date, default: Date.now },
     user: {type: String, required: true}
 });

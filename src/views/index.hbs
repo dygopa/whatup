@@ -35,34 +35,132 @@
     {{#if posts}}
         {{#each posts}}
             {{#if filename}}
-                <div class="wu--card">
-                    <div class="wu--card-photo">
-                        <div class="card-photo" style="background-image: url('/public/upload/{{filename}}')"></div>
+                <div class="wu--card card-body-1">
+                    <div class="wu--card-header">
+                        <div class="wu--card-user">
+                            <div class="wu--card-user-pic">
+                                <div class="account-pic" style="background-image:url(./public/img/pic-profile.jpeg);">
+                                </div>
+                            </div>
+                            <div class="wu--card-user-info">
+                                <p class="username">supaylan</p>
+                                <p class="wu--card-date-p">
+                                    10 min ago
+                                </p>
+                            </div>
+                        </div>
+                        <div class="wu--card-more">
+                            <div class="btn-more">
+                                más
+                            </div>
+                        </div>
                     </div>
-                    <div class="wu--card-body card-body-1">
+                    <div class="wu--card-body">
                         <div class="wu--card-text">
                             <p class="wu--card-text-p">
                                 {{description}}
                             </p>
                         </div>
-                        <div class="wu--card-date">
-                            <p class="wu--card-date-p">
-                                10 min ago
+                        <div class="wu--card-picture">
+                            <div class="card-photo" style="background-image: url('{{imgUrl}}')"></div>
+                        </div>
+                    </div>
+                    <div class="wu--card-footer">
+                        <div class="action-group">
+                            <span class="action-span">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark">
+                                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                            </span>
+                            <p class="action-counter">
+                                1.6K
+                            </p>
+                        </div>
+                        <div class="action-group">
+                            <span class="action-span">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark">
+                                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                            </span>
+                            <p class="action-counter">
+                                1.6K
+                            </p>
+                        </div>
+                        <div class="action-group">
+                            <span class="action-span">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark">
+                                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                            </span>
+                            <p class="action-counter">
+                                1.6K
                             </p>
                         </div>
                     </div>
                 </div>
             {{else}}
-                <div class="wu--card">
-                    <div class="wu--card-body card-body-2">
-                        <div class="wu--card-text">
+                <div class="wu--card card-body-2">
+                    <div class="wu--card-header">
+                        <div class="wu--card-user">
+                            <div class="wu--card-user-pic">
+                                <div class="account-pic" style="background-image:url(./public/img/pic-profile.jpeg);">
+                                </div>
+                            </div>
+                            <div class="wu--card-user-info">
+                                <p class="username">supaylan</p>
+                                <p class="wu--card-date-p">
+                                    10 min ago
+                                </p>
+                            </div>
+                        </div>
+                        <div class="wu--card-more">
+                            <div class="btn-more">
+                                más
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wu--card-body">
+                        <div class="wu--card-text" style="margin-bottom: 0;">
                             <p class="wu--card-text-p">
                                 {{description}}
                             </p>
                         </div>
-                        <div class="wu--card-date">
-                            <p class="wu--card-date-p">
-                                10 min ago
+                    </div>
+                    <div class="wu--card-footer">
+                        <div class="action-group">
+                            <span class="action-span">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark">
+                                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                            </span>
+                            <p class="action-counter">
+                                1.6K
+                            </p>
+                        </div>
+                        <div class="action-group">
+                            <span class="action-span">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark">
+                                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                            </span>
+                            <p class="action-counter">
+                                1.6K
+                            </p>
+                        </div>
+                        <div class="action-group">
+                            <span class="action-span">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark">
+                                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                            </span>
+                            <p class="action-counter">
+                                1.6K
                             </p>
                         </div>
                     </div>

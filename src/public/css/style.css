@@ -1097,16 +1097,17 @@ p.sidebar-link-p {
   box-sizing: border-box;
   margin-bottom: 12%;
   height: fit-content;
+  background-color: #101010;
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 4% 0%;
 }
 
 .wu--card-body {
   position: relative;
-  background-color: #101010;
-  border-radius: 20px;
   width: 100%;
-  height: 20vh;
-  padding: 10% 10% 3% 10%;
-  display: grid;
+  height: fit-content;
+  padding: 3% 0% 3% 0%;
 }
 
 .card-body-1::before {
@@ -1137,20 +1138,23 @@ p.sidebar-link-p {
 
 .wu--card-text {
   position: relative;
-  margin-bottom: 0%;
   display: block;
   width: 100%;
+  margin-bottom: 5%;
+  padding: 0% 5%;
 }
 
 p.wu--card-text-p {
   font-family: 'Poppins';
-  font-weight: 600;
-  font-size: 17px;
+  font-weight: 200;
+  font-size: 14px;
   color: #ffffff;
 }
 
 p.wu--card-date-p {
-  font-size: 13px;
+  font-size: 11px;
+  font-weight: 300;
+  line-height: initial;
   color: #888;
 }
 
@@ -1171,6 +1175,106 @@ p.wu--card-date-p {
   display: block;
   background-position: center;
   background-size: cover;
+}
+
+.wu--card-header {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 10vh;
+  padding: 0% 5%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wu--card-user {
+  display: flex;
+  position: relative;
+  height: fit-content;
+  box-sizing: border-box;
+  align-items: center;
+  max-width: 36%;
+  width: fit-content;
+}
+
+.wu--card-more {
+  position: relative;
+  display: block;
+  width: fit-content;
+}
+
+.btn-more {
+  background-color: #292929;
+  width: 40px;
+  height: 40px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  text-align: center;
+  display: grid;
+  color: #fff;
+  align-content: center;
+  font-size: 12px;
+}
+
+.wu--card-user-pic {
+  position: relative;
+  display: block;
+  width: fit-content;
+  margin-right: 10%;
+  height: fit-content;
+}
+
+.wu--card-user-pic .account-pic {
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 50px;
+}
+
+.wu--card-user-info {
+  position: relative;
+  height: fit-content;
+  width: auto;
+  display: block;
+}
+
+.wu--card-user-info p.username {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: initial;
+}
+
+.wu--card-picture {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 40vh;
+}
+
+.wu--card-footer {
+  position: relative;
+  display: flex;
+  width: 100%;
+  padding: 2% 5% 0% 5%;
+}
+
+.action-group {
+  position: relative;
+  display: flex;
+  margin-right: 6%;
+  height: fit-content;
+}
+
+span.action-span {
+  color: #464646;
+  margin-right: 15%;
+  line-height: initial;
+}
+
+p.action-counter {
+  color: #464646;
+  line-height: initial;
 }
 
 /*Signup y Signin*/
