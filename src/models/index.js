@@ -1,5 +1,5 @@
 const { model } = require("mongoose");
 
 module.exports = {
-    Post: require('./Post'),
+    Post: require('./Post')
 };

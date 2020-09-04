@@ -26,22 +26,26 @@ ctrl.create = async (req, res) => {
                 const ext = path.extname(req.file.originalname).toLowerCase();
                 if (ext === '.png' || ext === '.jpg' || ext === '.jpeg' || ext === '.gif'){
 
-                    const result = await cloudinary.uploader.upload(req.file.path);
-                    const newPost = new Post({
-                        description: req.body.description,
-                        filename: imgUrl + ext,
-                        imgUrl: result.secure_url,
-                        public_id: result.public_id
-                    });
-                    newPost.user = req.user._id;
-                    
-                    await newPost.save();
-                    await fs.unlink(imageTempPath);
-                    
-                    console.log(newPost);
-                    
-                    req.flash('success_msg', 'Post publicado con exito');
-                    res.redirect('/');
+                    try {
+                        const result = await cloudinary.uploader.upload(req.file.path);
+                        const newPost = new Post({
+                            description: req.body.description,
+                            filename: imgUrl + ext,
+                            imgUrl: result.secure_url,
+                            public_id: result.public_id
+                        });
+                        newPost.user = req.user._id;
+                        
+                        await newPost.save();
+                        await fs.unlink(imageTempPath);
+                        
+                        console.log(newPost);
+                        
+                        req.flash('success_msg', 'Post publicado con exito');
+                        res.redirect('/');
+                    } catch (e) {
+                        console.log(e);
+                    }
 
                 }else{
                     await fs.unlink(imageTempPath);

@@ -1,21 +1,22 @@
+const express = require('express');
 const path = require('path');
-const exphbs = require('express-handlebars');
 const morgan = require('morgan');
 const multer = require('multer');
-const express = require('express');
+const exphbs = require('express-handlebars');
 const session = require('express-session');
 const flash = require('connect-flash');
 const connectMongo = require('connect-mongo');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const cloudinary = require('cloudinary').v2;
-require('dotenv').config()
-
 const routes = require('../routes/index');
-
 const errorHandler = require('errorhandler');
-
+const { urlencoded } = require('express');
 require('../config/passport');
+
+if(process.env.NODE_ENV !== 'production'){
+    require('dotenv').config()
+}
 
 module.exports = app => {
 
@@ -46,12 +47,13 @@ module.exports = app => {
 
     app.use(session({
         secret: 'secret',
-        resave: true,
-        saveUninitialized: true,
+        resave: false,
+        saveUninitialized: false,
         store: new MongoStore({mongooseConnection: mongoose.connection})
     }));
 
     app.use(express.json());
+    app.use(urlencoded({extended: false}));
     app.use(flash());
     app.use(passport.initialize());
     app.use(passport.session());
