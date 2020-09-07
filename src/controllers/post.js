@@ -6,8 +6,10 @@ const cloudinary = require('cloudinary').v2;
 
 const {Post} = require('../models');
 
-ctrl.index = (req, res) => {
-
+ctrl.index = async (req, res) => {
+    const post = await Post.findOne({public_id: req.params.public_id}).lean();
+    console.log(post);
+    res.render('posts/post');
 };
 
 ctrl.create = async (req, res) => {

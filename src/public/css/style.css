@@ -209,12 +209,19 @@ button.wu--close {
   --moz-border-radius: 10px;
   border-radius: 10px;
   text-align: center;
-  background-color: var(--primary);
-  color: #fff;
+  /* background-color: var(--primary); */
+  color: var(--primary);
+  border: 1px solid var(--primary);
   cursor: pointer;
   text-overflow: ellipsis;
   transition: all ease-in-out .3s;
   display: grid;
+}
+
+#uploadFileBtn:hover{
+  background-color: var(--primary);
+  color: #fff;
+  border: 1px solid var(--primary);
 }
 
 .wu--btn-icon {
