@@ -31,6 +31,8 @@ function show(input) {
     }
 }
 
+//Tamaño del textarea automático
+
 function textAreaAdjust(element) {
   element.style.height = "1px";
   element.style.height = (10+element.scrollHeight)+"px";
@@ -39,3 +41,14 @@ function textAreaAdjust(element) {
 function closeAlert(){
   document.getElementById("alert").style.display = "none";
 }
+
+//Mostrar la contraseña
+
+$("#toggle-password").click(function() {
+  var input = $($(this).attr("toggle"));
+  if (input.attr("type") == "password") {
+    input.attr("type", "text");
+  } else {
+    input.attr("type", "password");
+  }
+});

@@ -4,16 +4,16 @@
 <div class="wu--site-main">
 
     <div class="form-container mb-5">
-        <form action="/posts" method="post" enctype="multipart/form-data">
+        <form id="uploadForm" action="/posts" method="POST" enctype="multipart/form-data">
             <div class="form-group">
-                <textarea name="description" onkeyup="textAreaAdjust(this)"  class="wu-input-textarea" placeholder="¿Algo que decir?" style="overflow:hidden" required></textarea>
+                <textarea name="description" onkeyup="textAreaAdjust(this)" class="wu-input-textarea" placeholder="¿Algo que decir?" style="overflow:hidden" required></textarea>
             </div>
             <div class="form-img-container">
                 <div id="image" class="hidde"></div>
             </div>
             <div class="flex" style="justify-content: space-between;">
                 <div class="form-group">
-                    <div id="uploadFileBtn" onclick="getFile()">
+                    <div id="uploadFileBtn" onclick="getFile();">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image">
                             <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
                             <circle cx="8.5" cy="8.5" r="1.5"/>
@@ -24,7 +24,7 @@
                         <input id="upfile" type="file" name="image" value="upload" onchange="sub(this); show(this);" />   
                     </div>
                 </div>
-                <button class="ml-3 wu--btn wu--btn-primary">
+                <button type="submit" id="uploadButton" class="ml-3 wu--btn wu--btn-primary">
                     Publicar
                 </button>
             </div>
@@ -35,7 +35,7 @@
     {{#if posts}}
         {{#each posts}}
             {{#if filename}}
-                <a href="/posts/{{_id}}" class="wu--card card-body-1">
+                <div class="wu--card card-body-1">
                     <div class="wu--card-header">
                         <div class="wu--card-user">
                             <div class="wu--card-user-pic">
@@ -43,7 +43,7 @@
                                 </div>
                             </div>
                             <div class="wu--card-user-info">
-                                <p class="username">supaylan</p>
+                                <p class="username">{{userPost.username}}</p>
                                 <p class="wu--card-date-p">
                                     10 min ago
                                 </p>
@@ -51,7 +51,16 @@
                         </div>
                         <div class="wu--card-more">
                             <div class="btn-more">
-                                más
+                                <div class="action-group">
+                                    <span class="action-span">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical">
+                                            <circle cx="12" cy="12" r="1"></circle>
+                                            <circle cx="12" cy="5" r="1"></circle>
+                                            <circle cx="12" cy="19" r="1"></circle>
+                                        </svg>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -66,43 +75,48 @@
                         </div>
                     </div>
                     <div class="wu--card-footer">
-                        <div class="action-group">
+                        <button id="btn-like" class="action-group btn" data-id="{{_id}}">
                             <span class="action-span">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark">
-                                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
+                                    <path
+                                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                    </path>
                                 </svg>
                             </span>
-                            <p class="action-counter">
-                                1.6K
+                            <p class="likes-count">
+                                {{likes}}
                             </p>
-                        </div>
-                        <div class="action-group">
+                        </button>
+                        <button class="action-group">
                             <span class="action-span">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark">
-                                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle">
+                                    <path
+                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                    </path>
                                 </svg>
                             </span>
                             <p class="action-counter">
-                                1.6K
+                                0
                             </p>
-                        </div>
+                        </button>
                         <div class="action-group">
                             <span class="action-span">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark">
-                                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
                                 </svg>
                             </span>
                             <p class="action-counter">
-                                1.6K
+                                0
                             </p>
                         </div>
                     </div>
-                </a>
+                </div>
             {{else}}
-                <a href="/posts/{{_id}}" class="wu--card card-body-2">
+                <div class="wu--card card-body-2">
                     <div class="wu--card-header">
                         <div class="wu--card-user">
                             <div class="wu--card-user-pic">
@@ -118,7 +132,16 @@
                         </div>
                         <div class="wu--card-more">
                             <div class="btn-more">
-                                más
+                                <div class="action-group">
+                                    <span class="action-span">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical">
+                                            <circle cx="12" cy="12" r="1"></circle>
+                                            <circle cx="12" cy="5" r="1"></circle>
+                                            <circle cx="12" cy="19" r="1"></circle>
+                                        </svg>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -130,41 +153,46 @@
                         </div>
                     </div>
                     <div class="wu--card-footer">
-                        <div class="action-group">
+                        <button id="btn-like" class="action-group btn" data-id="{{_id}}">
                             <span class="action-span">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark">
-                                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
+                                    <path
+                                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                    </path>
                                 </svg>
                             </span>
-                            <p class="action-counter">
-                                1.6K
+                            <p class="likes-count">
+                                {{likes}}
                             </p>
-                        </div>
-                        <div class="action-group">
+                        </button>
+                        <button class="action-group">
                             <span class="action-span">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark">
-                                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle">
+                                    <path
+                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                    </path>
                                 </svg>
                             </span>
                             <p class="action-counter">
-                                1.6K
+                                0
                             </p>
-                        </div>
+                        </button>
                         <div class="action-group">
                             <span class="action-span">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark">
-                                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
                                 </svg>
                             </span>
                             <p class="action-counter">
-                                1.6K
+                                0
                             </p>
                         </div>
                     </div>
-                </a>
+                </div>
             {{/if}}
         {{/each}}
     {{else}}

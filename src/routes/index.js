@@ -14,6 +14,7 @@ module.exports = app => {
     router.get('/posts/:post_id', isAuthenticated, post.index);
     router.post('/posts', isAuthenticated, post.create);
     router.post('/posts/:post_id/like', isAuthenticated, post.like);
+    router.post('/posts/:post_id/removeLike', isAuthenticated, post.removeLike);
     router.post('/posts/:post_id/comment', isAuthenticated, post.comment);
     router.delete('/posts/:post_id', isAuthenticated, post.remove);
     

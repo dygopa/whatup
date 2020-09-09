@@ -7,9 +7,9 @@ const cloudinary = require('cloudinary').v2;
 const {Post} = require('../models');
 
 ctrl.index = async (req, res) => {
-    const post = await Post.findOne({public_id: req.params.public_id}).lean();
+    const post = await Post.findOne({id: req.params._id}).lean();
     console.log(post);
-    res.render('posts/post');
+    res.render('posts/post', {post});
 };
 
 ctrl.create = async (req, res) => {
@@ -73,8 +73,28 @@ ctrl.create = async (req, res) => {
     }
 };
 
-ctrl.like = (req, res) => {
+ctrl.like = async (req, res) => {
+    const post = await Post.findOne({id: req.params._id});
+    // console.log(post)
+    if (post) {
+      post.likes = post.likes + 1;
+      await post.save();
+      res.json({likes: post.likes})
+    } else {
+      res.status(500).json({error: 'Internal Error'});
+    }
+};
 
+ctrl.removeLike = async (req, res) =>{
+    const post = await Post.findOne({id: req.params._id});
+    // console.log(post)
+    if (post) {
+      post.likes = post.likes - 1;
+      await post.save();
+      res.json({likes: post.likes})
+    } else {
+      res.status(500).json({error: 'Internal Error'});
+    }
 };
 
 ctrl.comment = (req, res) => {
