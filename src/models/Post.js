@@ -10,7 +10,12 @@ const PostSchema = new Schema({
     imgUrl: { type: String},
     public_id: { type: String},
     timestamp: { type: Date, default: Date.now },
-    user: {type: String, required: true}
+    // user: {type: String, required: true}
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User', 
+        required: true
+    }
 });
 
 PostSchema.virtual('uniqueId').get(function(){

@@ -1,11 +1,11 @@
-const { Post, User } = require('../models');
+const { Post } = require('../models');
 
 const ctrl = {};
 
 ctrl.index = async (req, res) => {
-    const posts = await Post.find({user: req.user._id}).sort({timestamp: -1}).lean();
-    // const user = await User.findOne({id: req.user.id}).lean();
+    const posts = await Post.find().sort({timestamp: -1}).populate('user').lean();
     res.render('index', {posts});
+    console.log(posts);
 };
 
 module.exports = ctrl;

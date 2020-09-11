@@ -4,7 +4,7 @@ const {randomNumber} = require('../helpers/libs');
 const fs = require('fs-extra');
 const cloudinary = require('cloudinary').v2;
 
-const {Post} = require('../models');
+const {Post, User} = require('../models');
 
 ctrl.index = async (req, res) => {
     const post = await Post.findOne({id: req.params._id}).lean();
@@ -14,7 +14,7 @@ ctrl.index = async (req, res) => {
 
 ctrl.create = async (req, res) => {
     if(req.file){
-        const saveImage = async () =>{
+        const saveImage = async () =>{  
             
             const imgUrl = randomNumber();
             const images = await Post.find({
@@ -29,6 +29,7 @@ ctrl.create = async (req, res) => {
                 if (ext === '.png' || ext === '.jpg' || ext === '.jpeg' || ext === '.gif'){
 
                     try {
+                        const userId = req.user._id;
                         const result = await cloudinary.uploader.upload(req.file.path);
                         const newPost = new Post({
                             description: req.body.description,
@@ -36,9 +37,10 @@ ctrl.create = async (req, res) => {
                             imgUrl: result.secure_url,
                             public_id: result.public_id
                         });
-                        newPost.user = req.user._id;
-                        
+                        const user = await User.findById(userId)
+                        newPost.user = user;
                         await newPost.save();
+                        
                         await fs.unlink(imageTempPath);
                         
                         console.log(newPost);
@@ -60,16 +62,18 @@ ctrl.create = async (req, res) => {
         
         saveImage();
     }else{
+
+        const userId = req.user._id;
         const newPost = new Post({
             description: req.body.description
         });
-
-        newPost.user = req.user._id;
+        const user = await User.findById(userId)
+        newPost.user = user;
         await newPost.save();
 
-        console.log(newPost);
-        req.flash('success_msg', 'Post publicado con exito');
         res.redirect('/');
+        req.flash('success_msg', 'Post publicado con exito');
+        console.log(newPost);
     }
 };
 

@@ -1,8 +1,14 @@
 const usersCtrl = {};
-
-const User = require('../models/User');
-
 const passport = require('passport');
+const {User, Post} = require('../models');
+
+usersCtrl.renderMeProfile = async (req, res) => {
+    const posts = await Post.find({user: req.user._id}).sort({timestamp: -1}).populate('user').lean();
+
+    const user = req.user;
+    res.render('users/me', {user, posts});
+    console.log(user, posts);
+}
 
 usersCtrl.renderSignUpForm = (req, res) =>{
     res.render('users/signup');

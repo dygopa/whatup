@@ -2,36 +2,13 @@
 {{> sidebar }}
 
 <div class="wu--site-main">
-
-    <div class="form-container mb-5">
-        <form id="uploadForm" action="/posts" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-                <textarea name="description" onkeyup="textAreaAdjust(this)" class="wu-input-textarea" placeholder="¿Algo que decir?" style="overflow:hidden" required></textarea>
-            </div>
-            <div class="form-img-container">
-                <div id="image" class="hidde"></div>
-            </div>
-            <div class="flex" style="justify-content: space-between;">
-                <div class="form-group">
-                    <div id="uploadFileBtn" onclick="getFile();">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image">
-                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                            <circle cx="8.5" cy="8.5" r="1.5"/>
-                            <polyline points="21 15 16 10 5 21"/>
-                        </svg>    
-                    </div>
-                    <div style='height: 0px;width: 0px; overflow:hidden;'>
-                        <input id="upfile" type="file" name="image" value="upload" onchange="sub(this); show(this);" />   
-                    </div>
-                </div>
-                <button type="submit" id="uploadButton" class="ml-3 wu--btn wu--btn-primary">
-                    Publicar
-                </button>
-            </div>
-        </form>
-    </div>
-
-    <div class="wu--feed-main">
+    <p>
+        {{user.username}}
+    </p>
+    <p>
+        {{user.email}}
+    </p>
+<div class="wu--feed-main">
     {{#if posts}}
         {{#each posts}}
             {{#if filename}}

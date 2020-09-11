@@ -1,9 +1,11 @@
 const { Router } = require("express");
 const router = Router();
-const {renderSignUpForm, renderSigninForm, signup, signin, logout} = require('../controllers/users');
+const {renderSignUpForm, renderSigninForm, renderMeProfile, signup, signin, logout} = require('../controllers/users');
 const { isAuthenticated } = require('../helpers/auth');
 const User = require('../models/User');
 
+
+router.get('/me', renderMeProfile);
 
 router.get('/signup', renderSignUpForm);
 router.post('/signup', signup);
