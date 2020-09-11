@@ -7,7 +7,7 @@ const cloudinary = require('cloudinary').v2;
 const {Post, User} = require('../models');
 
 ctrl.index = async (req, res) => {
-    const post = await Post.findOne({id: req.params._id}).lean();
+    const post = await Post.findOne({_id: req.params.post_id}).lean();
     console.log(post);
     res.render('posts/post', {post});
 };

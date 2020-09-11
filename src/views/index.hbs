@@ -37,7 +37,7 @@
             {{#if filename}}
                 <div class="wu--card card-body-1">
                     <div class="wu--card-header">
-                        <div class="wu--card-user">
+                        <a href="/{{user.username}}" class="wu--card-user">
                             <div class="wu--card-user-pic">
                                 <div class="account-pic" style="background-image:url(./public/img/pic-profile.jpeg);">
                                 </div>
@@ -48,7 +48,7 @@
                                     10 min ago
                                 </p>
                             </div>
-                        </div>
+                        </a>
                         <div class="wu--card-more">
                             <div class="btn-more">
                                 <div class="action-group">
@@ -65,13 +65,13 @@
                         </div>
                     </div>
                     <div class="wu--card-body">
-                        <div class="wu--card-text">
-                            <p class="wu--card-text-p">
+                        <a href="/posts/{{_id}}" class="wu--card-text">
+                            <p  class="wu--card-text-p">
                                 {{description}}
                             </p>
-                        </div>
+                        </a>
                         <div class="wu--card-picture">
-                            <div class="card-photo" style="background-image: url('{{imgUrl}}')"></div>
+                            <a href="/posts/{{_id}}" class="card-photo" style="background-image: url('{{imgUrl}}')"></a>
                         </div>
                     </div>
                     <div class="wu--card-footer">
@@ -118,7 +118,7 @@
             {{else}}
                 <div class="wu--card card-body-2">
                     <div class="wu--card-header">
-                        <div class="wu--card-user">
+                        <a href="/{{user.username}}" class="wu--card-user">
                             <div class="wu--card-user-pic">
                                 <div class="account-pic" style="background-image:url(./public/img/pic-profile.jpeg);">
                                 </div>
@@ -129,7 +129,7 @@
                                     10 min ago
                                 </p>
                             </div>
-                        </div>
+                        </a>
                         <div class="wu--card-more">
                             <div class="btn-more">
                                 <div class="action-group">
@@ -146,11 +146,11 @@
                         </div>
                     </div>
                     <div class="wu--card-body">
-                        <div class="wu--card-text" style="margin-bottom: 0;">
+                        <a href="/posts/{{_id}}" class="wu--card-text" style="margin-bottom: 0;">
                             <p class="wu--card-text-p">
                                 {{description}}
                             </p>
-                        </div>
+                        </a>
                     </div>
                     <div class="wu--card-footer">
                         <button id="btn-like" class="action-group btn" data-id="{{_id}}">

@@ -42,6 +42,10 @@ a {
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;
   transition: .3s all ease;
+  font-weight: 200;
+  font-size: 14px;
+  line-height:20px;
+  color: #ffffff;
 }
 
 a,
@@ -1150,6 +1154,7 @@ p.sidebar-link-p {
   padding: 0% 5%;
 }
 
+a.wu--card-text-p,
 p.wu--card-text-p {
   font-family: 'Poppins';
   font-weight: 200;

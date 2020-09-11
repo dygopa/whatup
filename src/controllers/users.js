@@ -3,11 +3,20 @@ const passport = require('passport');
 const {User, Post} = require('../models');
 
 usersCtrl.renderMeProfile = async (req, res) => {
-    const posts = await Post.find({user: req.user._id}).sort({timestamp: -1}).populate('user').lean();
-
     const user = req.user;
-    res.render('users/me', {user, posts});
+    const posts = await Post.find({user: req.user._id}).sort({timestamp: -1}).populate('user').lean();
+    
+    actualUser = req.user;
+    res.render('users/profile', {user, posts, actualUser});
     console.log(user, posts);
+}
+
+usersCtrl.renderUserProfile = async (req, res) => {
+    const user = await User.findOne({username: req.params.username}).lean();
+    console.log(user);
+    actualUser = req.user;
+
+    res.render('users/profile', {user, actualUser});
 }
 
 usersCtrl.renderSignUpForm = (req, res) =>{

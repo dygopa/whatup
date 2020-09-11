@@ -7,11 +7,13 @@ const UserSchema = new Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   date: { type: Date, default: Date.now },
-  posts: {
-    type: Schema.Types.ObjectId,
-    ref: 'Post', 
-    required: true
-  }
+  imgUrl: { type: String},
+  public_id: { type: String}
+  // posts: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'Post', 
+  //   required: true
+  // }
 });
 
 UserSchema.methods.encryptPassword = async password => {
